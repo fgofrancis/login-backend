@@ -11,17 +11,19 @@ const app = express();
 // hacia abajo
 app.use(cors() );
 
+//Lectura y parseo del body
+app.use(express.json() );
+
+
 //Base de datos
 dbConnection();
 
 //crear la rutas
-app.get('/', (req, res)=>{
-    
-    res.json({
-        ok:true,
-        msg:'Hola mundo'
-    })
-})
+app.use('/api/usuario', require('./routes/usuario-route'));
+app.use('/api/login', require('./routes/auth-route'));
+
+
+
 app.listen(process.env.PORT,()=>{
     console.log('Servidor corriendo en el puerto ' + process.env.PORT);
 
