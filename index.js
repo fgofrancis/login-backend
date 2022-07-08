@@ -11,6 +11,11 @@ const app = express();
 // hacia abajo
 app.use(cors() );
 
+
+// Carpeta pública
+app.use( express.static('public') );
+
+
 //Lectura y parseo del body
 app.use(express.json() );
 
